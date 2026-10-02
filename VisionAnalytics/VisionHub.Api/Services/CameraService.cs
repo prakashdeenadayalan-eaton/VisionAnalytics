@@ -28,9 +28,16 @@ namespace VisionHub.Api.Services
             return await _cameraRepository.AddCameraAsync(camera);
         }
 
-        public async Task UpdateCameraAsync(Camera camera)
+        public async Task UpdateCameraAsync(UpdateCameraRequest request)
         {
-            await _cameraRepository.UpdateCameraAsync(camera);
+            var existingCamera = await _cameraRepository.GetCameraByIdAsync(request.Id);
+            if (existingCamera != null)
+            {
+                existingCamera.Name = request.Name;
+                existingCamera.Enabled = request.Enabled;
+                existingCamera.AnalyticsEnabled = request.AnalyticsEnabled;
+                await _cameraRepository.UpdateCameraAsync(existingCamera);
+            }
         }
 
         public async Task DeleteCameraAsync(int id)

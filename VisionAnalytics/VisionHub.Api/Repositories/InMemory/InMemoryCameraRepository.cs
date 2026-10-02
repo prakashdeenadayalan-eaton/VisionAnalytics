@@ -39,6 +39,8 @@ namespace VisionHub.Api.Repositories.InMemory
             if (existingCamera != null)
             {
                 existingCamera.Name = camera.Name;
+                existingCamera.Enabled = camera.Enabled;
+                existingCamera.AnalyticsEnabled = camera.AnalyticsEnabled;
             }
             await Task.CompletedTask;
         }

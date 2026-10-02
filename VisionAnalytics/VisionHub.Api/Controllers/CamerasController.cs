@@ -6,7 +6,7 @@ using VisionHub.Api.Services;
 namespace VisionHub.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class CamerasController : Controller
     {
 
@@ -44,6 +44,14 @@ namespace VisionHub.Api.Controllers
                 camera);
         }
 
-
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateCameraRequest request)
+        {
+            var existingCamera = await _cameraService.GetCameraByIdAsync(request.Id);
+            if (existingCamera == null)
+                return NotFound();
+            await _cameraService.UpdateCameraAsync(request);
+            return Ok();
+        }
     }
 }
