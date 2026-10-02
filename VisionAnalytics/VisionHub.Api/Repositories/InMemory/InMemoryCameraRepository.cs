@@ -11,8 +11,9 @@ namespace VisionHub.Api.Repositories.InMemory
         public InMemoryCameraRepository()
         {
             // Initialize with some sample cameras
-            _cameras.Add(new Camera(1, "Maindoor Camera"));
-            _cameras.Add(new Camera(2, "Backyard Camera"));
+            _cameras.Add(new Camera(1, "Maindoor Camera", true, true));
+            _cameras.Add(new Camera(2, "Backyard Camera", true, false));
+            _cameras.Add(new Camera(3, "Garage Camera", false, false));
         }
 
         public async Task<IEnumerable<Camera>> GetCamerasAsync()
@@ -81,6 +82,18 @@ namespace VisionHub.Api.Repositories.InMemory
             }
 
             await Task.CompletedTask;
+        }
+
+        public async Task<IEnumerable<Camera>> GetCamerasByStatusAsync(bool enabled)
+        {
+            var cameras = _cameras.Where(c => c.Enabled == enabled);
+            return await Task.FromResult(cameras);
+        }
+
+        public async Task<IEnumerable<Camera>> GetCamerasByAnalyticsStatusAsync(bool analyticsEnabled)
+        {
+            var cameras = _cameras.Where(c => c.AnalyticsEnabled == analyticsEnabled);
+            return await Task.FromResult(cameras);
         }
     }
 }

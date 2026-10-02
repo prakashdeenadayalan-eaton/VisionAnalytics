@@ -10,5 +10,7 @@ namespace VisionHub.Api.Repositories.Interfaces
         Task UpdateCameraAsync(Camera camera);
         Task DeleteCameraAsync(int id);
         Task<IEnumerable<Camera>> GetCamerasByNameAsync(string name);
+        Task<IEnumerable<Camera>> GetCamerasByStatusAsync(bool enabled);
+        Task<IEnumerable<Camera>> GetCamerasByAnalyticsStatusAsync(bool analyticsEnabled);
     }
 }

@@ -75,5 +75,15 @@ namespace VisionHub.Api.Services
 
         }
 
+        public async Task<IEnumerable<Camera>> GetCamerasByStatusAsync(bool enabled)
+        {
+            return await _cameraRepository.GetCamerasByStatusAsync(enabled);
+        }
+
+        public async Task<IEnumerable<Camera>> GetCamerasByAnalyticsStatusAsync(bool analyticsEnabled)
+        {
+            return await _cameraRepository.GetCamerasByAnalyticsStatusAsync(analyticsEnabled);
+        }
+
     }
 }

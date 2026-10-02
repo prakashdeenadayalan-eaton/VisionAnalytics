@@ -53,5 +53,19 @@ namespace VisionHub.Api.Controllers
             await _cameraService.UpdateCameraAsync(request);
             return Ok();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByStatus(bool enabled)
+        {
+            var cameras = await _cameraService.GetCamerasByStatusAsync(enabled);
+            return Ok(cameras);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByAnalyticsStatus(bool analyticsEnabled)
+        {
+            var cameras = await _cameraService.GetCamerasByAnalyticsStatusAsync(analyticsEnabled);
+            return Ok(cameras);
+        }
     }
 }
