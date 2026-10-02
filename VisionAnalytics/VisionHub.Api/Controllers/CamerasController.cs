@@ -1,24 +1,49 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VisionHub.Api.Models;
+using VisionHub.Api.Models.Camera;
+using VisionHub.Api.Services;
 
 namespace VisionHub.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class CamerasController : Controller
     {
-        public IActionResult Index()
+
+        private readonly CameraService _cameraService;
+        public CamerasController(CameraService cameraService)
         {
-            return View();
+            _cameraService = cameraService;
         }
 
-        public IEnumerable<MockIPCamera> GetCameras()
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
-            // Return a list of cameras (this is just a placeholder, you would typically fetch this from a database or service)
-            return new List<MockIPCamera>
-            {
-                new MockIPCamera(id: 1, name: "Maindoor Camera"),
-                new MockIPCamera(id: 2, name: "Backyard Camera")
-            };
+            var cameras = await _cameraService.GetCamerasAsync();
+            return Ok(cameras);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var camera = await _cameraService.GetCameraByIdAsync(id);
+            if (camera == null)
+                return NotFound();
+
+            return Ok(camera);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateCameraRequest request)
+        {
+            var camera = await _cameraService.AddCameraAsync(request);
+
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = camera.Id },
+                camera);
+        }
+
+
     }
 }

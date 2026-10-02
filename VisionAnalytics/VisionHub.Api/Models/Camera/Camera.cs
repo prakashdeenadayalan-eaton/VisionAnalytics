@@ -1,4 +1,4 @@
-﻿namespace VisionHub.Api.Models
+﻿namespace VisionHub.Api.Models.Camera
 {
     public class Camera
     {
