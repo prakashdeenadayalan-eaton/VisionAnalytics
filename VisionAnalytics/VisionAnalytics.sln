@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraManager", "CameraMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionHub.Api", "VisionHub.Api\VisionHub.Api.csproj", "{335B207F-28FA-4B46-AD6A-46B452FB8000}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraReader", "CameraReader\CameraReader.csproj", "{7EA0063C-7BA4-48AD-B351-A07CB84F83C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{335B207F-28FA-4B46-AD6A-46B452FB8000}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{335B207F-28FA-4B46-AD6A-46B452FB8000}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{335B207F-28FA-4B46-AD6A-46B452FB8000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA0063C-7BA4-48AD-B351-A07CB84F83C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA0063C-7BA4-48AD-B351-A07CB84F83C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA0063C-7BA4-48AD-B351-A07CB84F83C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA0063C-7BA4-48AD-B351-A07CB84F83C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
